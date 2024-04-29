@@ -1,0 +1,39 @@
+.header {
+  background-color: #191d1b;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  align-items: center;
+}
+.header .header_wrapper {
+  display: flex;
+  width: 100%;
+  padding: 5px 0;
+  height: 50px;
+}
+.header .header_wrapper .header_left {
+  width: 50%;
+  display: flex;
+  align-items: center;
+}
+.header .header_wrapper .header_left h1 {
+  white-space: nowrap;
+  cursor: pointer;
+  color: #fff;
+}
+.header .header_wrapper .header_right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+}
+.header .header_wrapper .header_right a {
+  color: #fff;
+}
+.header .header_wrapper .header_right .login_header_btn {
+  padding: 10px 20px;
+  background-color: #7b42ff;
+  border-radius: 50px;
+  color: #fff;
+  cursor: pointer;
+}/*# sourceMappingURL=header.css.map */

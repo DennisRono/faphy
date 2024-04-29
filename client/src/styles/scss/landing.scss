@@ -1,0 +1,60 @@
+.landing {
+  height: min-content;
+
+  .landing_wrapper {
+    height: 100%;
+    display: flex;
+    gap: 1rem;
+    .landing_left {
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 10px;
+      h1 {
+        margin-bottom: 10px;
+        font-size: 1rem;
+      }
+      .landing_model_predictions {
+        // height: 300px;
+        // background-color: red;
+      }
+    }
+    .landing_right {
+      flex: 1;
+      .landing_right_wrapper {
+        .landing_right_symbols {
+          .landing_symbols_title {
+            margin-bottom: 10px;
+            font-size: 1rem;
+          }
+          .symbols_unordered_list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            background: black;
+            padding: 10px;
+            border-radius: 5px;
+            backdrop-filter: opacity(0.3);
+            position: relative;
+            margin-bottom: 1rem;
+            .symbols_background {
+              left: 0;
+              opacity: 0.5;
+              position: absolute;
+              top: 0;
+            }
+            li {
+              padding: 10px 20px;
+              border-radius: 25px;
+              background-color: #ff8c00;
+              cursor: pointer;
+            }
+          }
+          .nice_landing_image {
+          }
+        }
+      }
+    }
+  }
+}

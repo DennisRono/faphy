@@ -1,0 +1,68 @@
+[
+  {
+    "name": "Apple",
+    "symbol": "AAPL",
+    "price": "",
+    "change": "0"
+  },
+  {
+    "name": "Alphabet Inc",
+    "symbol": "GOOG",
+    "price": "",
+    "change": "0"
+  },
+  {
+    "name": "Meta",
+    "symbol": "META",
+    "price": "",
+    "change": "0"
+  },
+  {
+    "name": "Netflix",
+    "symbol": "NFLX",
+    "price": "",
+    "change": "0"
+  },
+  {
+    "name": "Adv Micro Dev",
+    "symbol": "AMD",
+    "price": "",
+    "change": "-0.5"
+  },
+  {
+    "name": "Tesla",
+    "symbol": "TSLA",
+    "price": "",
+    "change": "2"
+  },
+  {
+    "name": "Amazon",
+    "symbol": "AMZN",
+    "price": "",
+    "change": "0"
+  },
+  {
+    "name": "Starbucks",
+    "symbol": "SBUX",
+    "price": "",
+    "change": "1"
+  },
+  {
+    "name": "Qualcomm",
+    "symbol": "QCOM",
+    "price": "",
+    "change": "0"
+  },
+  {
+    "name": "Microsoft",
+    "symbol": "MSFT",
+    "price": "",
+    "change": "0"
+  },
+  {
+    "name": "Cisco Systems",
+    "symbol": "CSCO",
+    "price": "",
+    "change": "0"
+  }
+]

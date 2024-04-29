@@ -1,0 +1,96 @@
+.breadcrumb {
+  margin: 1rem 0;
+}
+.breadcrumb .breadcrumb_warapper .breadcrumb_content {
+  height: 40px;
+  width: 100%;
+  background-color: #191d1b;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.breadcrumb .breadcrumb_warapper .breadcrumb_content::before {
+  border-radius: 8px;
+  content: "";
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 60px;
+  z-index: 2;
+  background: linear-gradient(90deg, #191d1b, rgba(25, 29, 27, 0));
+  left: 0;
+}
+.breadcrumb .breadcrumb_warapper .breadcrumb_content::after {
+  border-radius: 8px;
+  content: "";
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 60px;
+  z-index: 2;
+  background: linear-gradient(270deg, #191d1b, rgba(25, 29, 27, 0));
+  right: 0;
+}
+.breadcrumb .breadcrumb_warapper .breadcrumb_content .breadcrumb_unlist {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  gap: 1rem;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  left: 100%;
+  width: 100%;
+  animation: scroll-horizontal 76.5s linear infinite;
+}
+.breadcrumb .breadcrumb_warapper .breadcrumb_content .breadcrumb_unlist .breadcrumb_list_item {
+  display: inline-block;
+  margin-right: 3rem;
+}
+.breadcrumb .breadcrumb_warapper .breadcrumb_content .breadcrumb_unlist .breadcrumb_list_item .breadcrumb_texts {
+  color: aliceblue;
+  font-size: 0.9rem;
+}
+.breadcrumb .breadcrumb_warapper .breadcrumb_content .breadcrumb_unlist .breadcrumb_list_item .breadcrumb_texts .breadcrumb_caret_ic {
+  fill: #00a300;
+  height: 20px;
+  width: 15px;
+  margin-bottom: -6px;
+}
+.breadcrumb .breadcrumb_warapper .breadcrumb_content .breadcrumb_unlist_secondary {
+  animation: scroll-horizontal 76.5s linear infinite;
+  animation-delay: 38.25s;
+}
+
+@keyframes scroll-horizontal {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: -100%;
+  }
+}
+.breadcrumb_unlist:hover,
+.breadcrumb_unlist:hover ~ .breadcrumb_unlist_secondary {
+  animation-play-state: paused;
+}
+
+.breadcrumb_unlist_secondary:hover {
+  animation-play-state: paused;
+}
+
+.breadcrumb_content:hover > .breadcrumb_unlist:not(:hover) {
+  animation-play-state: paused;
+}
+
+.breadcrumb_warapper:hover > .breadcrumb_unlist:not(:hover) {
+  animation-play-state: paused;
+}/*# sourceMappingURL=breadcrumb.css.map */

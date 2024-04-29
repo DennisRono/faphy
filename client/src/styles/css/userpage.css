@@ -1,0 +1,43 @@
+.userpage {
+  padding: 1rem 0 2rem 0;
+}
+.userpage .userpage_wrapper {
+  height: 60vh;
+  background: #000;
+  background: url("../../assets/images/stock.jpg") center/cover no-repeat;
+  position: relative;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.userpage .userpage_wrapper .userpage_overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.userpage .userpage_wrapper .userpage_overlay .userpage_left {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding-left: 2rem;
+}
+.userpage .userpage_wrapper .userpage_overlay .userpage_left h1 {
+  font-size: 4rem;
+  color: aliceblue;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.userpage .userpage_wrapper .userpage_overlay .userpage_left h2 {
+  font-size: 2rem;
+  color: aliceblue;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}/*# sourceMappingURL=userpage.css.map */

@@ -1,0 +1,73 @@
+.authentification {
+  height: 100vh;
+  .auth_wrapper {
+    height: 100%;
+    .auth_top {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .auth_inner_wrapper {
+        height: min-content;
+        .back_to_home_link {
+          .auth_title {
+            text-align: center;
+            margin-bottom: 20px;
+            cursor: pointer;
+          }
+        }
+        .auth_info {
+          text-align: center;
+          margin-bottom: 10px;
+        }
+        .auth_p_info {
+          text-align: center;
+        }
+        .authentication_forms {
+          width: 300px;
+          display: flex;
+          justify-content: center;
+          gap: 10px;
+          overflow: hidden;
+          .hide_authbox {
+            display: none;
+            flex: unset !important;
+          }
+          .auth_wrap_box {
+            width: 280px;
+            margin: 20px auto;
+            .auth_login_form {
+              width: 100%;
+              .auth_form_group {
+                margin-bottom: 20px;
+                input {
+                  padding: 10px 20px;
+                  width: calc(100% - 40px);
+                }
+              }
+              .auth_login_btn {
+                padding: 10px 20px;
+                width: 100%;
+                margin: 0 auto;
+                border-radius: 5px;
+                background-color: #7b42ff;
+                color: #fff;
+                cursor: pointer;
+                outline: none;
+                border: none;
+              }
+            }
+          }
+        }
+        .auth_additional_meta {
+          text-align: center;
+          span {
+            text-align: center;
+            color: #214aff;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}

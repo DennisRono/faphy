@@ -1,0 +1,72 @@
+.authentification {
+  height: 100vh;
+}
+.authentification .auth_wrapper {
+  height: 100%;
+}
+.authentification .auth_wrapper .auth_top {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.authentification .auth_wrapper .auth_top .auth_inner_wrapper {
+  height: -moz-min-content;
+  height: min-content;
+}
+.authentification .auth_wrapper .auth_top .auth_inner_wrapper .back_to_home_link .auth_title {
+  text-align: center;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.authentification .auth_wrapper .auth_top .auth_inner_wrapper .auth_info {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.authentification .auth_wrapper .auth_top .auth_inner_wrapper .auth_p_info {
+  text-align: center;
+}
+.authentification .auth_wrapper .auth_top .auth_inner_wrapper .authentication_forms {
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  overflow: hidden;
+}
+.authentification .auth_wrapper .auth_top .auth_inner_wrapper .authentication_forms .hide_authbox {
+  display: none;
+  flex: unset !important;
+}
+.authentification .auth_wrapper .auth_top .auth_inner_wrapper .authentication_forms .auth_wrap_box {
+  width: 280px;
+  margin: 20px auto;
+}
+.authentification .auth_wrapper .auth_top .auth_inner_wrapper .authentication_forms .auth_wrap_box .auth_login_form {
+  width: 100%;
+}
+.authentification .auth_wrapper .auth_top .auth_inner_wrapper .authentication_forms .auth_wrap_box .auth_login_form .auth_form_group {
+  margin-bottom: 20px;
+}
+.authentification .auth_wrapper .auth_top .auth_inner_wrapper .authentication_forms .auth_wrap_box .auth_login_form .auth_form_group input {
+  padding: 10px 20px;
+  width: calc(100% - 40px);
+}
+.authentification .auth_wrapper .auth_top .auth_inner_wrapper .authentication_forms .auth_wrap_box .auth_login_form .auth_login_btn {
+  padding: 10px 20px;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 5px;
+  background-color: #7b42ff;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+.authentification .auth_wrapper .auth_top .auth_inner_wrapper .auth_additional_meta {
+  text-align: center;
+}
+.authentification .auth_wrapper .auth_top .auth_inner_wrapper .auth_additional_meta span {
+  text-align: center;
+  color: #214aff;
+  cursor: pointer;
+}/*# sourceMappingURL=auth.css.map */
