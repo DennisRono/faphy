@@ -6,6 +6,7 @@ import api from '../api/axios'
 
 const BreadCrumb = () => {
   const [symbols, setSymbols] = useState(symbolsjson)
+
   function updateSymbols(init, newdata) {
     let update = newdata.map((b) => {
       let match = init.find((t) => t.symbol === b.symbol)
@@ -43,57 +44,23 @@ const BreadCrumb = () => {
       if (res.status === 200) {
         const newupdates = updateSymbols(res.data.last_rows, symbols)
         setSymbols(newupdates)
+      } else {
+        fetchPredictions()
       }
     }
     fetchPredictions()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
   return (
     <div>
       <div className="breadcrumb">
         <div className="container breadcrumb_warapper">
           <div className="breadcrumb_content">
-            <ul className="breadcrumb_unlist">
-              {Array.isArray(symbols) &&
-                symbols.map((symbol) => {
-                  return (
-                    <li className="breadcrumb_list_item" key={symbol.symbol}>
-                      {symbol.price ? (
-                        <span className="breadcrumb_texts">
-                          {`${symbol.symbol} ${parseFloat(symbol.open).toFixed(
-                            2
-                          )} (${(
-                            parseFloat(symbol.open) - parseFloat(symbol.price)
-                          ).toFixed(2)}`}
-                          {symbol.prediction ? (
-                            <Caret
-                              className="breadcrumb_caret_ic"
-                              style={
-                                (
-                                  parseFloat(symbol.open) -
-                                  parseFloat(symbol.price)
-                                ).toFixed(2) < 0
-                                  ? {
-                                      fill: 'red',
-                                      transform: 'rotate(180deg)',
-                                      marginBottom: '-4px',
-                                    }
-                                  : {}
-                              }
-                            />
-                          ) : null}
-                          {`) Prediction: ${
-                            symbol.prediction === 'UP' ? 'BUY' : 'SELL'
-                          }`}
-                        </span>
-                      ) : (
-                        <span className="breadcrumb_texts">{`${symbol.symbol}`}</span>
-                      )}
-                    </li>
-                  )
-                })}
-            </ul>
-            <ul className="breadcrumb_unlist  breadcrumb_unlist_secondary">
+            <ul
+              className="breadcrumb_unlist"
+              style={{ animationDuration: '76.5s' }}
+            >
               {Array.isArray(symbols) &&
                 symbols.map((symbol) => {
                   return (

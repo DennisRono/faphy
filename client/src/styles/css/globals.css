@@ -6,6 +6,17 @@
   margin: 0;
   border-style: border-box;
   -webkit-font-smoothing: inherit;
+  text-decoration: none;
+  transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property: color, background-color, opacity, border;
+}
+
+*,
+:active,
+:focus,
+:hover,
+:link {
+  outline: none;
 }
 
 img {
@@ -47,4 +58,60 @@ body {
 
 .container {
   margin: 0 5%;
+}
+
+/**
+ * ==============================================
+ * dot-flashing
+ * ==============================================
+ */
+.dot-flashing {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: #ffffff;
+  animation: dot-flashing 1s infinite linear alternate;
+  animation-delay: 0.5s;
+  margin: 0 auto;
+}
+
+.dot-flashing::before,
+.dot-flashing::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 0;
+}
+
+.dot-flashing::before {
+  left: -15px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: #ffffff;
+  animation: dot-flashing 1s infinite alternate;
+  animation-delay: 0s;
+}
+
+.dot-flashing::after {
+  left: 15px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: #ffffff;
+  animation: dot-flashing 1s infinite alternate;
+  animation-delay: 1s;
+}
+
+@keyframes dot-flashing {
+  0% {
+    background-color: #ffffff;
+  }
+  50%, 100% {
+    background-color: rgba(255, 243, 243, 0.2);
+  }
 }/*# sourceMappingURL=globals.css.map */

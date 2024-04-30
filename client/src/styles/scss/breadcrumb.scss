@@ -34,24 +34,25 @@
         right: 0;
       }
       .breadcrumb_unlist {
+        // display: inline-block;
+        // padding: 0;
+        // margin: 0;
+        // list-style-type: none;
+        // overflow: hidden;
+        // position: absolute;
+        // white-space: nowrap;
+        // left: 100%;
+        // width: min-content;
+        //animation: scroll-horizontal 76.5s linear infinite;
         display: flex;
-        flex-direction: row;
         align-items: center;
-        justify-content: space-around;
-        gap: 1rem;
-        display: inline-block;
-        padding: 0;
-        margin: 0;
-        list-style-type: none;
-        overflow: hidden;
-        position: absolute;
-        white-space: nowrap;
-        left: 100%;
-        width: 100%;
-        animation: scroll-horizontal 76.5s linear infinite;
+        justify-content: space-evenly;
+        margin: 0 8px;
+        min-width: 180px;
+        animation: scroll-horizontal linear infinite;
         .breadcrumb_list_item {
           display: inline-block;
-          margin-right: 3rem;
+          margin: 0 8px;
           .breadcrumb_texts {
             color: aliceblue;
             font-size: 0.9rem;
@@ -64,49 +65,20 @@
           }
         }
       }
-      .breadcrumb_unlist_secondary {
-        animation: scroll-horizontal 76.5s linear infinite;
-        animation-delay: 38.25s;
-      }
+      // .breadcrumb_unlist_secondary {
+      //   animation: scroll-horizontal linear infinite;
+      //   animation-delay: calc(76.5s / 2);
+      // }
     }
   }
 }
 
 @keyframes scroll-horizontal {
   0% {
-    left: 100%;
+    transform: translate(0);
   }
 
   100% {
-    left: -100%;
+    transform: translate(-100%);
   }
-}
-
-.breadcrumb_unlist:hover,
-.breadcrumb_unlist:hover ~ .breadcrumb_unlist_secondary {
-  -webkit-animation-play-state: paused;
-  -moz-animation-play-state: paused;
-  -o-animation-play-state: paused;
-  animation-play-state: paused;
-}
-
-.breadcrumb_unlist_secondary:hover {
-  -webkit-animation-play-state: paused;
-  -moz-animation-play-state: paused;
-  -o-animation-play-state: paused;
-  animation-play-state: paused;
-}
-
-.breadcrumb_content:hover > .breadcrumb_unlist:not(:hover) {
-  -webkit-animation-play-state: paused;
-  -moz-animation-play-state: paused;
-  -o-animation-play-state: paused;
-  animation-play-state: paused;
-}
-
-.breadcrumb_warapper:hover > .breadcrumb_unlist:not(:hover) {
-  -webkit-animation-play-state: paused;
-  -moz-animation-play-state: paused;
-  -o-animation-play-state: paused;
-  animation-play-state: paused;
 }

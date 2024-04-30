@@ -1,9 +1,53 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import '../styles/css/auth.css'
+import api from '../api/axios'
+import { toast } from 'react-toastify'
+import Cookies from 'js-cookie'
+import { useDispatch } from 'react-redux'
+import { setIsLogged } from '../state/actions/loggedAction.js'
 
 const Auth = () => {
   const [isregistering, setIsRegistering] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [data, setData] = useState({
+    email: '',
+    password: '',
+    cpassword: '',
+  })
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  const handleLogin = async (e) => {
+    e.preventDefault()
+    setLoading(true)
+    const res = await api('POST', 'login', data)
+    setLoading(false)
+    if (res.status === 200) {
+      toast('Login Successful!', { type: 'success' })
+      dispatch(setIsLogged(true))
+      Cookies.set(
+        '_faphy',
+        JSON.stringify({ token: res.data.access_token, email: res.data.email }),
+        { expires: 7 }
+      )
+      navigate('/')
+    } else {
+      toast(res.data.message, { type: 'error' })
+    }
+  }
+
+  const handleRegister = async (e) => {
+    e.preventDefault()
+    setLoading(true)
+    const res = await api('POST', 'register', data)
+    setLoading(false)
+    if (res.status === 200) {
+      toast('Registration Successful!', { type: 'success' })
+    } else {
+      toast(res.data.message, { type: 'error' })
+    }
+  }
   return (
     <div>
       <div className="authentification">
@@ -25,14 +69,41 @@ const Auth = () => {
                       : 'auth_wrap_box'
                   }
                 >
-                  <form className="auth_login_form">
+                  <form
+                    className="auth_login_form"
+                    onSubmit={(e) => {
+                      handleLogin(e)
+                    }}
+                  >
                     <div className="auth_form_group">
-                      <input type="email" placeholder="Enter Email" />
+                      <input
+                        type="email"
+                        placeholder="Enter Email"
+                        name="email"
+                        value={data.email}
+                        onChange={(e) => {
+                          setData({ ...data, [e.target.name]: e.target.value })
+                        }}
+                      />
                     </div>
                     <div className="auth_form_group">
-                      <input type="password" placeholder="Enter Password" />
+                      <input
+                        type="password"
+                        placeholder="Enter Password"
+                        name="password"
+                        value={data.password}
+                        onChange={(e) => {
+                          setData({ ...data, [e.target.name]: e.target.value })
+                        }}
+                      />
                     </div>
-                    <button className="auth_login_btn">Log in</button>
+                    <button className="auth_login_btn">
+                      {loading ? (
+                        <div className="dot-flashing"></div>
+                      ) : (
+                        'Log in'
+                      )}
+                    </button>
                   </form>
                 </div>
                 <div
@@ -42,17 +113,52 @@ const Auth = () => {
                       : 'auth_wrap_box hide_authbox'
                   }
                 >
-                  <form className="auth_login_form">
+                  <form
+                    className="auth_login_form"
+                    onSubmit={(e) => {
+                      handleRegister(e)
+                    }}
+                  >
                     <div className="auth_form_group">
-                      <input type="email" placeholder="Enter Email" />
+                      <input
+                        type="email"
+                        placeholder="Enter Email"
+                        name="email"
+                        value={data.email}
+                        onChange={(e) => {
+                          setData({ ...data, [e.target.name]: e.target.value })
+                        }}
+                      />
                     </div>
                     <div className="auth_form_group">
-                      <input type="password" placeholder="Enter Password" />
+                      <input
+                        type="password"
+                        placeholder="Enter Password"
+                        name="password"
+                        value={data.password}
+                        onChange={(e) => {
+                          setData({ ...data, [e.target.name]: e.target.value })
+                        }}
+                      />
                     </div>
                     <div className="auth_form_group">
-                      <input type="password" placeholder="Confirm Password" />
+                      <input
+                        type="password"
+                        placeholder="Confirm Password"
+                        name="cpassword"
+                        value={data.cpassword}
+                        onChange={(e) => {
+                          setData({ ...data, [e.target.name]: e.target.value })
+                        }}
+                      />
                     </div>
-                    <button className="auth_login_btn">Sign Up</button>
+                    <button className="auth_login_btn">
+                      {loading ? (
+                        <div className="dot-flashing"></div>
+                      ) : (
+                        'Sign Up'
+                      )}
+                    </button>
                   </form>
                 </div>
               </div>
@@ -65,7 +171,7 @@ const Auth = () => {
                     setIsRegistering(!isregistering)
                   }}
                 >
-                  {isregistering ? 'register' : 'login'}
+                  {isregistering ? 'login' : 'register'}
                 </span>
               </div>
             </div>
