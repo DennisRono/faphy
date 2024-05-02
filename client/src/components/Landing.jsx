@@ -6,6 +6,7 @@ import axios from 'axios'
 import api from '../api/axios'
 import symbolsjson from '../data/symbols.json'
 import { getCurrentDate } from '../utils/get_current_date'
+import { toast } from 'react-toastify'
 
 const Landing = () => {
   const [prediction, setPrediction] = useState()
@@ -22,6 +23,7 @@ const Landing = () => {
     )
     if (res.status === 200) {
       setData(res.data.data)
+    } else {
     }
   }
 
@@ -29,6 +31,8 @@ const Landing = () => {
     const res = await api('POST', 'predict', { date: date, ticker: symbol })
     if (res.status === 200) {
       setPrediction(res.data.prediction[0].toLowerCase())
+    } else {
+      toast('could not fetch historical data', { type: 'error' })
     }
   }
 
