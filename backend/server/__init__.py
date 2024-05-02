@@ -19,7 +19,7 @@ def create_app(a,b):
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mydatabase.db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-    CORS(app)
+    CORS(app, resources={r"*": {"origins": "https://optiwealth.onrender.com"}})
     db.init_app(app)
     jwt.init_app(app)
 
