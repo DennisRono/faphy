@@ -7,6 +7,7 @@ import api from '../api/axios'
 import symbolsjson from '../data/symbols.json'
 import { getCurrentDate } from '../utils/get_current_date'
 import { toast } from 'react-toastify'
+import backend from '../api/backend'
 
 const Landing = () => {
   const [prediction, setPrediction] = useState()
@@ -19,7 +20,7 @@ const Landing = () => {
     enddate = '2024-04-24'
   ) => {
     const res = await axios.get(
-      `http://127.0.0.1:5000/get-data?ticker=${ticker}&startdate=${startdate}&enddate=${enddate}`
+      `${backend()}get-data?ticker=${ticker}&startdate=${startdate}&enddate=${enddate}`
     )
     if (res.status === 200) {
       setData(res.data.data)
