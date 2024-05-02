@@ -55,9 +55,9 @@ const Auth = () => {
           <div className="auth_top">
             <div className="auth_inner_wrapper">
               <Link to="/" className="back_to_home_link">
-                <h1 className="auth_title">FAPHY</h1>
+                <h1 className="auth_title">OPTIWEALTH</h1>
               </Link>
-              <h3 className="auth_info">Log in to your FAPHY accout</h3>
+              <h3 className="auth_info">Log in to your OPTIWEALTH accout</h3>
               <p className="auth_p_info">
                 By logging in, you agree with our policies
               </p>

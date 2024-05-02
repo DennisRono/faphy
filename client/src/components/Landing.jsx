@@ -5,6 +5,7 @@ import stock from '../assets/images/stock.jpg'
 import axios from 'axios'
 import api from '../api/axios'
 import symbolsjson from '../data/symbols.json'
+import { getCurrentDate } from '../utils/get_current_date'
 
 const Landing = () => {
   const [prediction, setPrediction] = useState()
@@ -24,8 +25,8 @@ const Landing = () => {
     }
   }
 
-  const fetchPrediction = async () => {
-    const res = await api('POST', 'predict', {})
+  const fetchPrediction = async (date = getCurrentDate()) => {
+    const res = await api('POST', 'predict', { date: date, ticker: symbol })
     if (res.status === 200) {
       setPrediction(res.data.prediction[0].toLowerCase())
     }

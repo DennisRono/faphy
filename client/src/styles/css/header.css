@@ -19,6 +19,9 @@
   white-space: nowrap;
   cursor: pointer;
   color: #fff;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 .header .header_wrapper .header_right {
   flex: 1;

@@ -1,0 +1,33 @@
+.dashboard {
+  .dashboard_wrapper {
+    padding-top: 1rem;
+    .dash_landing_flexxer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      .dash_landing_left {
+        width: 60%;
+        .dash_graph_filters {
+          .date_pickers {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            .dtp_item {
+              span {
+                margin-right: 5px;
+              }
+              .date_picker {
+                padding: 3px 8px;
+                width: 70px;
+              }
+            }
+          }
+        }
+      }
+      .dash_landing_right {
+        width: 40%;
+      }
+    }
+  }
+}

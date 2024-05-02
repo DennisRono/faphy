@@ -27,7 +27,7 @@
   text-align: center;
 }
 .authentification .auth_wrapper .auth_top .auth_inner_wrapper .authentication_forms {
-  width: 300px;
+  width: 350px;
   display: flex;
   justify-content: center;
   gap: 10px;
@@ -38,7 +38,7 @@
   flex: unset !important;
 }
 .authentification .auth_wrapper .auth_top .auth_inner_wrapper .authentication_forms .auth_wrap_box {
-  width: 280px;
+  width: calc(100% - 20px);
   margin: 20px auto;
 }
 .authentification .auth_wrapper .auth_top .auth_inner_wrapper .authentication_forms .auth_wrap_box .auth_login_form {

@@ -14,21 +14,25 @@ def index():
 def predict():
     if request.method == 'OPTIONS':
         return jsonify({"message": "Preflight request successful"}), 200
-    data = {
-        'Open': ['2.490664'],
-        'High': ['2.591785'],
-        'Low': ['2.390042'],
-        'Close': ['2.499133'],
-        'Volume': ['897427216'],
-    }
-    df = pd.DataFrame(data)
-    def load_model_and_predict(data):
-        with open("Model/model_dt_Classification.pkl", 'rb') as file:
-            loaded_model = pickle.load(file)
-        predictions = loaded_model.predict(df)
-        return predictions
-    prediction = load_model_and_predict(df)
-    return jsonify({'prediction': prediction.tolist()}), 200
+    try:
+        frontend_data = request.get_json()
+        # get data as an object
+        downloaded_data = pd.read_csv('Data/downloaded_data.csv')
+        date_filter = frontend_data.get("date")
+        ticker = frontend_data.get("ticker")
+        filtered_data = downloaded_data[downloaded_data['Date'] == date_filter]
+        data  = filtered_data[filtered_data['Ticker'] == ticker]
+        data = data.drop(columns=['Ticker', 'Date'], inplace=False)
+        print(data)
+        def load_model_and_predict(data):
+            with open("Model/model_dt_Classification.pkl", 'rb') as file:
+                loaded_model = pickle.load(file)
+            predictions = loaded_model.predict(data)
+            return predictions
+        prediction = load_model_and_predict(data)
+        return jsonify({'prediction': prediction.tolist()}), 200
+    except Exception as e:
+        return jsonify({"message": "something wrong happened", "stack": str(e)}), 500
 
 @main.route('/get-data', methods=['GET'])
 def getdata():

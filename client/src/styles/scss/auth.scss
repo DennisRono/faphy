@@ -24,7 +24,7 @@
           text-align: center;
         }
         .authentication_forms {
-          width: 300px;
+          width: 350px;
           display: flex;
           justify-content: center;
           gap: 10px;
@@ -34,7 +34,7 @@
             flex: unset !important;
           }
           .auth_wrap_box {
-            width: 280px;
+            width: calc(100% - 20px);
             margin: 20px auto;
             .auth_login_form {
               width: 100%;
