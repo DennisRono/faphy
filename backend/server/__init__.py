@@ -10,7 +10,7 @@ jwt = JWTManager()
 from .main import main
 from .auth import auth
 
-def create_app(a,b):
+def create_app():
     app = Flask(__name__, static_folder='public')
 
     # app.config.from_object(config_object)
@@ -19,7 +19,7 @@ def create_app(a,b):
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mydatabase.db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-    CORS(app, resources={r"*": {"origins": "https://optiwealth.onrender.com"}})
+    CORS(app, resources={r"*": {"origins": ["https://optiwealth.onrender.com", "http://localhost:3000"]}})
     db.init_app(app)
     jwt.init_app(app)
 

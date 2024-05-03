@@ -45,7 +45,9 @@ const BreadCrumb = () => {
         const newupdates = updateSymbols(res.data.last_rows, symbols)
         setSymbols(newupdates)
       } else {
-        fetchPredictions()
+        setTimeout(() => {
+          fetchPredictions()
+        }, 5000)
       }
     }
     fetchPredictions()

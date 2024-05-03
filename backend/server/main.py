@@ -47,6 +47,23 @@ def getdata():
     data = data.to_dict(orient='records') 
     return jsonify({'data': data}), 200
 
+@main.route('/get-current-data', methods=['GET'])
+def getcurrentdata():
+    ticker = request.args.get('ticker')
+    startdate = request.args.get('startdate')
+    enddate = request.args.get('enddate')
+    print(ticker, startdate, enddate)
+    data = yf.download(ticker, start=startdate, end=enddate)
+    print(data)
+    if data.empty:
+        print({"message": "Did not found!"})
+        return jsonify({'data': []}), 200
+    else:
+        data = data.drop('Adj Close', axis=1)
+        data = data.reset_index()
+        data = data.to_dict(orient='records') 
+        return jsonify({'data': data}), 200
+
 @main.route('/get-last-close-and-predictions', methods=['POST', 'OPTIONS'])
 def lastclose():
     try:

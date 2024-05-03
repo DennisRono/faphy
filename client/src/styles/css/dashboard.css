@@ -3,7 +3,6 @@
 }
 .dashboard .dashboard_wrapper .dash_landing_flexxer {
   display: flex;
-  align-items: center;
   justify-content: center;
   gap: 1rem;
 }
@@ -24,4 +23,36 @@
 }
 .dashboard .dashboard_wrapper .dash_landing_flexxer .dash_landing_right {
   width: 40%;
+  height: 100;
+}
+.dashboard .dashboard_wrapper .dash_landing_flexxer .dash_landing_right .dash_my_signals_list {
+  min-height: 400px;
+  position: relative;
+}
+.dashboard .dashboard_wrapper .dash_landing_flexxer .dash_landing_right .dash_my_signals_list .dash_signal_item {
+  padding: 10px 20px;
+  background-color: #7b42ff;
+  margin-bottom: 10px;
+  border-radius: 23px;
+  color: #fff;
+}
+.dashboard .dashboard_wrapper .dash_landing_flexxer .dash_landing_right .dash_my_signals_list .dash_signal_item:nth-child(1) {
+  margin-top: 10px;
+}
+.dashboard .dashboard_wrapper .dash_landing_flexxer .dash_landing_right .dash_my_signals_list .dash_empty_signals {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.dashboard .dashboard_wrapper .dash_landing_flexxer .dash_landing_right .add_my_signals {
+  padding: 10px 20px;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 5px;
+  background-color: #7b42ff;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+  border: none;
 }/*# sourceMappingURL=dashboard.css.map */

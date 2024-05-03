@@ -1,0 +1,76 @@
+.signal_modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 100vh;
+}
+.signal_modal .signal_mod_wrapper {
+  width: 100%;
+  height: 100%;
+}
+.signal_modal .signal_mod_wrapper .signal_mod_inner_wrapper {
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.6352941176);
+  width: 100%;
+  height: 100%;
+}
+.signal_modal .signal_mod_wrapper .signal_mod_inner_wrapper .signal_mod_form_box {
+  width: 400px;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+}
+.signal_modal .signal_mod_wrapper .signal_mod_inner_wrapper .signal_mod_form_box .signal_modal_close {
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+}
+.signal_modal .signal_mod_wrapper .signal_mod_inner_wrapper .signal_mod_form_box .signal_box_title {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+.signal_modal .signal_mod_wrapper .signal_mod_inner_wrapper .signal_mod_form_box .signal_form {
+  width: 100%;
+  overflow: hidden;
+}
+.signal_modal .signal_mod_wrapper .signal_mod_inner_wrapper .signal_mod_form_box .signal_form .signal_form_group_flexxer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.signal_modal .signal_mod_wrapper .signal_mod_inner_wrapper .signal_mod_form_box .signal_form .signal_form_group {
+  margin-bottom: 20px;
+  width: 100%;
+}
+.signal_modal .signal_mod_wrapper .signal_mod_inner_wrapper .signal_mod_form_box .signal_form .signal_form_group label {
+  font-size: 0.8rem;
+}
+.signal_modal .signal_mod_wrapper .signal_mod_inner_wrapper .signal_mod_form_box .signal_form .signal_form_group .signal_input_form {
+  width: calc(100% - 25px);
+  padding: 5px 10px;
+  margin-top: 5px;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+.signal_modal .signal_mod_wrapper .signal_mod_inner_wrapper .signal_mod_form_box .signal_form .signal_form_btn {
+  padding: 10px 20px;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 5px;
+  background-color: #7b42ff;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+  border: none;
+}/*# sourceMappingURL=signal_modal.css.map */
