@@ -1,47 +1,57 @@
-import pickle
-import yfinance as yf
-import pandas as pd
 import numpy as np
+import pandas as pd
+from backtesting import Backtest, Strategy
+import pickle
+from bokeh.plotting import save, output_file, show
+import json
 
-def download_top_ten_data(tickers, start_date, end_date):
-    data = {}
-    for ticker in tickers:
-        data[ticker] = yf.download(ticker, start=start_date, end=end_date)
-    combined_data = pd.concat(data.values(), keys=data.keys(), names=['Ticker', 'Date'])
-    return combined_data
+# Load pre-trained LSTM model
+with open("Model/model_dt_regression.pkl", 'rb') as file:
+    loaded_model = pickle.load(file)
 
-def data_cleaning(df):
-    df = df.drop(columns=['Adj Close'])
-    df['change_tomorrow'] = df['Close'].pct_change(-1)
-    df['change_tomorrow'] = df['change_tomorrow'] * -1
-    df['change_tomorrow'] = df['change_tomorrow'] * 100
-    df = df.drop(columns = ['change_tomorrow'])
-    df = df.dropna().copy()
-    return df
+data = pd.read_csv('Data/downloaded_data.csv')
+data = data[data['Ticker'] == 'GOOG']
+data.drop(columns=['Ticker', 'Date'], inplace=True)
 
-def load_model_and_predict(data):
-    with open("../../Model/model_dt_Classification.pkl", 'rb') as file:
-        loaded_model = pickle.load(file)
-    predictions = loaded_model.predict(data)
-    return predictions
+class Regression(Strategy):
+    def init(self):
+        self.model = loaded_model
+        self.already_bought = False
+    def next(self):
+        explanatory_today = self.data.df.iloc[[-1], :]
+        forecast_tomorrow = self.model.predict(explanatory_today)[0]
+        if forecast_tomorrow > 1 and self.already_bought == False:
+            self.buy()
+            self.already_bought = True
+        elif forecast_tomorrow < -5 and self.already_bought == True:
+            self.sell()
+            self.already_bought = False
+        else:
+            pass
 
-top_ten_tickers = ['AAPL', 'MSFT', 'AMZN', 'SBUX', 'AMD', 'META', 'TSLA', 'CSCO', 'QCOM', 'NFLX', 'GOOG']
-start_date = '2000-01-01'
-end_date = '2024-04-24'
+def get_stats():
+    df_explanatory = data[['Open', 'High', 'Low', 'Close', 'Volume']].copy()
+    df_explanatory.iloc[-1:, :]
+    bt = Backtest(df_explanatory, Regression,
+                cash=10000, commission=.002, exclusive_orders=True)
+    results = bt.run()
+    results_fr= results.to_frame(name='Values').loc[:'Return [%]']
+    stats = bt.run()
+    
 
-combined_data = download_top_ten_data(top_ten_tickers, start_date, end_date)
-# combined_data.to_csv("../../Data/downloaded_data.csv", index=True)
-# df = combined_data.loc['GOOG']
+    plot = bt.plot(filename='server/reports_backtesting/backtesting_regression.html', open_browser=False)
 
-# df.head()
+    output_file("server/reports_backtesting/backtesting_regression.html")
+    save(plot)
 
-# Clean the data
-cleaned_data = data_cleaning(combined_data)
-cleaned_data.head()
-cleaned_data.to_csv("../../Data/downloaded_data.csv", index=True)
+    results_json = results_fr.to_json()
+    stats_json = stats.to_json()
+    data_dict = json.loads(stats_json)
+    data_dict.pop('_strategy', None)
+    data_dict.pop('_equity_curve', None)
+    data_dict.pop('_trades', None)
+    updated_json_data = json.dumps(data_dict)
+
+    return {"results": results_json, "stats": updated_json_data }
 
 
-# Load model and make predictions
-#predictions = load_model_and_predict(cleaned_data)
-
-# print(predictions)

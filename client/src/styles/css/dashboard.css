@@ -26,7 +26,8 @@
   height: 100;
 }
 .dashboard .dashboard_wrapper .dash_landing_flexxer .dash_landing_right .dash_my_signals_list {
-  min-height: 400px;
+  height: -moz-min-content;
+  height: min-content;
   position: relative;
 }
 .dashboard .dashboard_wrapper .dash_landing_flexxer .dash_landing_right .dash_my_signals_list .dash_signal_item {
@@ -39,12 +40,6 @@
 .dashboard .dashboard_wrapper .dash_landing_flexxer .dash_landing_right .dash_my_signals_list .dash_signal_item:nth-child(1) {
   margin-top: 10px;
 }
-.dashboard .dashboard_wrapper .dash_landing_flexxer .dash_landing_right .dash_my_signals_list .dash_empty_signals {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
 .dashboard .dashboard_wrapper .dash_landing_flexxer .dash_landing_right .add_my_signals {
   padding: 10px 20px;
   width: 100%;
@@ -55,4 +50,25 @@
   cursor: pointer;
   outline: none;
   border: none;
+}
+.dashboard .dashboard_wrapper .dash_landing_flexxer .dash_landing_right .stats_table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.dashboard .dashboard_wrapper .dash_landing_flexxer .dash_landing_right .stats_table th,
+.dashboard .dashboard_wrapper .dash_landing_flexxer .dash_landing_right .stats_table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+.dashboard .dashboard_wrapper .dash_landing_flexxer .dash_landing_right .stats_table th {
+  background-color: #f2f2f2;
+}
+.dashboard .dashboard_wrapper .dash_landing_flexxer .dash_landing_right .stats_table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+.dashboard .dashboard_wrapper .dash_landing_flexxer .dash_landing_right .stats_table tbody tr:hover {
+  background-color: #ddd;
 }/*# sourceMappingURL=dashboard.css.map */

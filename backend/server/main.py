@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request
 import pickle
 import pandas as pd
 import yfinance as yf
-import numpy as np
+from .utils.binding import get_stats
 
 main = Blueprint('main', __name__)
 
@@ -97,6 +97,11 @@ def lastclose():
     except Exception as e:
         print(e)
         return jsonify({"message": "error", "last_rows": [] }), 500
+
+@main.route('/get-stats', methods=['GET'])
+def serve_stats():
+    stats = get_stats()
+    return jsonify(stats)
 
 
 @main.errorhandler(403)
