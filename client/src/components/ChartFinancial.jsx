@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import ApexCharts from 'apexcharts'
 import dayjs from 'dayjs'
 
-const ChartFinancial = ({ data }) => {
+const ChartFinancial = ({ data, loading }) => {
   console.log(data)
   useEffect(() => {
     const options = {
@@ -58,6 +58,18 @@ const ChartFinancial = ({ data }) => {
           formatter: function (val) {
             return parseFloat(val).toFixed(2)
           },
+        },
+      },
+      noData: {
+        text: loading ? 'Loading...' : 'No Data to show',
+        align: 'center',
+        verticalAlign: 'middle',
+        offsetX: 0,
+        offsetY: 0,
+        style: {
+          color: undefined,
+          fontSize: '14px',
+          fontFamily: undefined,
         },
       },
     }

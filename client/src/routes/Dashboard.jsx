@@ -9,6 +9,7 @@ import ChartFinancial from '../components/ChartFinancial'
 import api from '../api/axios'
 import { v4 as uuidv4 } from 'uuid'
 import { formatDate } from '../utils/get_current_date'
+import symbolsjson from '../data/symbols.json'
 
 const Dashboard = () => {
   const [startDate, setStartDate] = useState(new Date())
@@ -17,6 +18,7 @@ const Dashboard = () => {
   const [data, setData] = useState([])
   const [symbol, setSymbol] = useState('AAPL')
   const [mysignals, setMySignals] = useState([])
+  const [chartloading, setChartLoading] = useState(false)
 
   const getdata = async (
     ticker = symbol,
@@ -24,10 +26,12 @@ const Dashboard = () => {
     enddate = formatDate(endDate)
   ) => {
     if (startdate !== enddate) {
+      setChartLoading(true)
       const res = await api(
         'GET',
         `get-current-data?ticker=${ticker}&startdate=${startdate}&enddate=${enddate}`
       )
+      setChartLoading(false)
       if (res.status === 200) {
         const formatted_data = Array.isArray(res.data.data)
           ? res.data.data.map((item) => {
@@ -86,10 +90,28 @@ const Dashboard = () => {
                       onChange={(date) => setEndDate(date)}
                     />
                   </div>
-                  <div className="dtp_item"></div>
+                  <div className="dtp_item">
+                    <select
+                      name="symbol"
+                      className="signal_input_form"
+                      style={{ width: '100%' }}
+                      value={symbol}
+                      onChange={(e) => {
+                        setSymbol(e.target.value)
+                      }}
+                    >
+                      {Array.isArray(symbolsjson) &&
+                        symbolsjson.map((symbol) => (
+                          <option
+                            value={symbol.symbol}
+                            key={symbol.symbol}
+                          >{`${symbol.name} (${symbol.symbol})`}</option>
+                        ))}
+                    </select>
+                  </div>
                 </div>
               </div>
-              <ChartFinancial data={data} />
+              <ChartFinancial data={data} loading={chartloading} />
             </div>
             <div className="dash_landing_right">
               <h2 className="dash_my_signals">My Signals</h2>

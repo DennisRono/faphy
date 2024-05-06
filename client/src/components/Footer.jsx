@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="footer">
         <div className="container footer_wrapper">
           <p className="footer_info">
-            Copyright &copy; {new Date().getFullYear()} | Cynthia Chelang'at
+            Copyright &copy; {new Date().getFullYear()} | optiwealth
           </p>
         </div>
       </div>
